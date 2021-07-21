@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:07:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/20 15:41:26 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/21 19:14:54 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,11 @@ int key_release(int keycode, t_vars *vars)
   return (1);
 }
 
-void   key_mouv(t_vars *vars) //【键位操作函数】
+void   palyer_mouv(t_vars *vars) //【键位操作函数】
 {
   if (vars->key->w == 1)
   {
-    // printf("w\n");
-    if (vars->mouv->y > 100)
+    if (vars->mouv->y > 1)
     {
         vars->mouv->y -= 1;
         printf("W : [%d]\n", vars->mouv->y);
@@ -79,8 +78,7 @@ void   key_mouv(t_vars *vars) //【键位操作函数】
   }
   else if (vars->key->a == 1)
   {
-    // printf("a\n");
-    if (vars->mouv->x > 100)
+    if (vars->mouv->x > 1)
     {
       vars->mouv->x -= 1;
       printf("A : [%d]\n", vars->mouv->x);
@@ -88,7 +86,6 @@ void   key_mouv(t_vars *vars) //【键位操作函数】
   }
   else if (vars->key->s == 1)
    {
-  //  printf("s\n");
     if (vars->mouv->y < 1000)
     {
       vars->mouv->y += 1;
@@ -97,7 +94,6 @@ void   key_mouv(t_vars *vars) //【键位操作函数】
    }
   else if (vars->key->d == 1)
    {
-    //  printf("d\n");
     if (vars->mouv->x < 1000)
     {
       vars->mouv->x += 1;
@@ -105,69 +101,18 @@ void   key_mouv(t_vars *vars) //【键位操作函数】
     }
    }
 }
-
-void draw_wall(t_vars *vars)
-{
+// int key_event(void)
+// {
   
-  // (X position * 4 + 4 * Line size * Y position)  像数的地址指针
-  //my_mlx_pixel_put(vars, x, y, 0x000000FF) 找到点放上颜色
-   int x_i = 0;
-	 int y_i;  
-	while (x_i < 1000)
-	{
-
-		y_i = 0;
-		while (y_i  < 1000)
-		{
-     
-      my_mlx_pixel_put(vars,  x_i,  y_i, 0x000000FF);
-      y_i += 1;
-		
-			 //找到点放上颜色
-		}
-		x_i += 1;
-	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传图片到窗口
-	
-	 //mlx_key_hook(vars->win, key_hook, vars);  //键盘设置
-                            
-}
-
-
-//img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-void draw_pixe(t_vars *vars)
-{
-  
-  // (X position * 4 + 4 * Line size * Y position)  像数的地址指针
-  //my_mlx_pixel_put(vars, x, y, 0x000000FF) 找到点放上颜色
-   int x_i = 0;
-	 int y_i;  
-	while ((vars->mouv->x) + x_i  < 100 + vars->mouv->x)
-	{
-
-		y_i = 0;
-		while ((vars->mouv->y) + y_i  < 100 + vars->mouv->y)
-		{
-     
-      my_mlx_pixel_put(vars,  vars->mouv->x + x_i,  vars->mouv->y + y_i, 0x00000000);
-      y_i += 1;
-		
-			 //找到点放上颜色
-		}
-		x_i += 1;
-	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传图片到窗口
-	
-	 //mlx_key_hook(vars->win, key_hook, vars);  //键盘设置
-                            
-}
+// }
 
 int	event_loop(t_vars *vars)
 {
-  draw_wall(vars);
-  draw_pixe(vars);
-  // mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传图片到窗口
-  key_mouv(vars);
+  //draw_one_pixe(vars,  0x00800000);
+  draw_map(vars);  //循环背景
+  
+  palyer_mouv(vars);
+  //key_event();  //循环事件之后显示的图片
 	return (1);
 }
 

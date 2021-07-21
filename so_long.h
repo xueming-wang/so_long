@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/20 17:28:43 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/21 17:50:32 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define SUCCESS 0
 # define FAILURE 1
 
+# define WIDTH 1000;
+# define HEIGHT 1000;
 
 
 typedef struct s_check
@@ -73,6 +75,7 @@ typedef struct	s_vars
 	char	**map;
 	int	map_x_len;
 	int	map_y_len;
+	int collect;
 	t_key 	*key;
 	t_mouv *mouv;
 	t_img *img;
@@ -86,13 +89,17 @@ int		event_loop(t_vars *vars);
 
 int key_press(int keycode, t_vars *vars);
 int key_release(int keycode, t_vars *vars);
-int	key_hook(int keycode, t_vars *vars);
+int	key_hook(int keycode);
 t_key  *init_key(void);
 int	__close__(t_vars *vars);
 void	__exit__(char *msg, t_vars *vars, int ret);
 void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void draw_pixe(t_vars *vars);
-void draw_pixe(t_vars *vars);
+
 t_check check_is_map(char *av);
+void draw_one_pixe(t_vars *vars, int color);
+void draw_map(t_vars *vars);
+void parsing(char *av, t_vars *vars);
+int	main(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 18:23:16 by xuwang            #+#    #+#              #
-#    Updated: 2021/07/20 18:28:48 by xuwang           ###   ########.fr        #
+#    Updated: 2021/07/21 17:52:25 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,11 @@ IFLAGS = -I. -I./libft
 LFLAGS = -L./libft -lft
 
 SRC	:= srcs/parser/check.c \
+		srcs/parser/check_map.c \
 		srcs/utils/exit.c \
 		srcs/main.c \
-		srcs/events/even_key.c 
+		srcs/events/even_key.c \
+		srcs/image/imag.c \
 		
 OBJ	:= $(SRC:%.c=%.o)
 

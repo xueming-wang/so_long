@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 16:12:47 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/20 16:13:32 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/21 18:19:45 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int check_is_file(char **av)
 	return (1);
 }
 
-int  map_is_one(char *str, int first_last_line, int len)
+static int  map_is_one(char *str, int first_last_line, int len)
 {
 	int i;
 
@@ -39,19 +39,19 @@ int  map_is_one(char *str, int first_last_line, int len)
 		while (str[i])
 		{
 			if (str[i] != '1')
-				quit_error("map error\n", str);
+				quit_error("map1 error\n", str);
 			i++;
 		}
 	}
 	else
 	{
 		if ((str[0] != '1') || (str[len - 1] != '1'))
-			quit_error("map error\n", str);
+			quit_error("map1 error\n", str);
 	}
 	return (1);
 }
 
-int check_is_nbr(char *str)
+static int check_is_nbr(char *str)
 {
 	int i = 0;
 	if(!str)
@@ -59,19 +59,20 @@ int check_is_nbr(char *str)
 	while (str[i])
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != 'P' && str[i] != 'C' && str[i] != 'E')
-			quit_error("map error\n", str);
+			quit_error("nbr1 error\n", str);
 		i++;
 	}
 	return (1);
 }
 
-int check_play(char *str, int r)
+static int check_play(char *str, int r)
 {
 	const char play[] = {'C', 'E', 'P'};
 	static int nbr[3] = {0};
-	int j = 0;
-	int i = 0;
+	int j;
+	int i;
 
+	i = 0;
 	while (str[i])
 	{
 		j = 0;
@@ -89,7 +90,7 @@ int check_play(char *str, int r)
 		while (i < 3)
 		{
 			if(nbr[i++] < 1 || nbr[2] > 1)
-				quit_error("map error\n", str);
+				quit_error("nbr3 error\n", str);
 		} 
 	}
 	return (1);
@@ -111,7 +112,9 @@ t_check check_is_map(char *av)
 		check.read = get_next_line(check.fd, &check.line);
 		check.len = ft_strlen(check.line);
 		if (check.prev_len != -1 && check.prev_len != check.len)
+		{
 		   quit_error("map error\n", check.line);
+		}
 		check_play(check.line, check.read);
 		check_is_nbr(check.line);
 		if (check.i++ == 0 || check.read == 0)
@@ -124,14 +127,4 @@ t_check check_is_map(char *av)
 	return (check);
 }
 
-// int main(int ac, char **av)
-// {
-// 	if (ac < 2 || ac > 2)
-// 		quit_error("agrc fault\n", NULL);
-// 	else
-// 	{
-// 		check_is_file(av);
-// 		check_is_map(av[1]);
-// 	}
-// 	return (0);
-// }
+

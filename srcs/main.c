@@ -6,22 +6,15 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/20 17:28:23 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/21 19:09:17 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)    //找到点 放上颜色
-{
-	char	*dst;
 
-	dst = vars->img->addr + (y * vars->img->line_len + x * (vars->img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	key_hook(int keycode, t_vars *vars)
+int	key_hook(int keycode)
 {
 	if (keycode== 13)
 		printf("IS W\n");
@@ -42,13 +35,20 @@ int	__close__(t_vars *vars)
 	return 1;	
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	
 	t_vars	*vars;
+	
+	if (ac < 2 || ac > 2)
+		__exit__("Error argument\n", NULL, FAILURE);
 
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		__exit__("Error malloc\n", vars, FAILURE);
+		
+	parsing(av[1], vars);
+	
 	vars->img = malloc(sizeof(t_img));
 	if (!vars->img)
 		__exit__("Error malloc\n", vars, FAILURE);
@@ -70,21 +70,7 @@ int	main(void)
 	vars->key = init_key();
 	if (!vars->key)
 		__exit__("Error malloc\n", vars, FAILURE);
-    // int x = 50;
-	// int y ;
-	// while (x < 100)
-	// {
-	// 	y = 50;
-	// 	while (y < 100)
-	// 	{
-	// 		my_mlx_pixel_put(vars, x, y, 0x000000FF);
-	// 		y++; //找到点放上颜色
-	// 	}
-	// 	++x;
-	// }
-	// mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传图片到窗口
-	
-	// mlx_key_hook(vars->win, key_hook, vars);  //键盘设置
+   
 	
 	vars->mouv->x = 100;
 	vars->mouv->y = 100;
@@ -93,26 +79,8 @@ int	main(void)
 	mlx_hook(vars->win, 3, 1L << 1, key_release, vars);
 	mlx_hook(vars->win, 17, 1L << 2, __close__, vars); //鼠标点叉叉
 	
-	mlx_loop_hook(vars->mlx, event_loop, vars);
+	mlx_loop_hook(vars->mlx, event_loop, vars);  //循环事件
 		
 	mlx_loop(vars->mlx);   //持续运行
 }
-
-// func2_draw(stzong)
-// {
-//         const int bianchang = 5
-//         int x_i;
-//         int y_i;
-
-//         x_i = 0;
-//         while (x + x_i < fangkuai + x)
-//         {
-//             y_i = 0;
-//             while (y + y_i < fangkuai + y)
-//             {
-//                 y_i++;
-//                 my_mlx_pixel_put(&imgptr, x+x_i, y+y_i, BLUE);
-//             }
-//             x_i++;
-//         }
-// }
+ // mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传网络  图片到窗口
