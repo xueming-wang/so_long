@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:17:39 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 17:02:25 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 17:07:16 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void draw_one_pixe(t_vars *vars, int i, int x_index, int y_index)  // i表示是
 			addr = vars->tex[i].addr;//取一个图片地址 从0 开始
 			addr += (size_t)((y / pixe_y) * vars->tex[i].height) * vars->tex[i].line_len;
 						//格子里y的值占格子长度的百分比位置 * 图片的高度 （得到点的颜色）* 一行的长度
-			addr += (size_t)((x /pixe_x) * vars->tex[i].width) * (vars->tex[i].bits_per_pixel / 8);
+			addr += (size_t)((x /pixe_x) * vars->tex[i].width) * 4;   //(vars->tex[i].bits_per_pixel / 8);
 					 	//格子里x的值占格子长度的百分比位置 * 图片的宽度（得到这个点） * 一个点的长度  （加起来就是这个点的地址颜色）；
     		pixel_put_color(vars,  x + (x_index * pixe_x),  y + (y_index * pixe_y), *(unsigned int *)addr);//画点的位置
     		x++;
