@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 18:58:31 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 19:01:32 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+#  define RED_CROSS 17
 # else
-#  define KEY_CODE_ESC 65307
-#  define KEY_CODE_W 119
-#  define KEY_CODE_S 115
-#  define KEY_CODE_A 97
-#  define KEY_CODE_D 100
+#  define KEY_ESC 65307
+#  define KEY_W 119
+#  define KEY_S 115
+#  define KEY_A 97
+#  define KEY_D 100
 #  define RED_CROSS 33
 # endif
 
