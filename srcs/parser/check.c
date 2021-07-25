@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 16:12:47 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/21 18:19:45 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/23 13:04:06 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int check_is_file(char **av)
 	while (av[1][i] != '.' )
 	{
 		if (i == 0)
-			quit_error("file error\n", NULL);
+			quit_error("Error\nfile error\n", NULL);
 		i--;
 	}
 	i++;
 	if (ft_strcmp((av[1] + i), "ber") != 0)
-		quit_error("file error\n", NULL);
+		quit_error("Error\nfile error\n", NULL);
 	return (1);
 }
 
@@ -39,14 +39,14 @@ static int  map_is_one(char *str, int first_last_line, int len)
 		while (str[i])
 		{
 			if (str[i] != '1')
-				quit_error("map1 error\n", str);
+				quit_error("Error\nmap error\n", str);
 			i++;
 		}
 	}
 	else
 	{
 		if ((str[0] != '1') || (str[len - 1] != '1'))
-			quit_error("map1 error\n", str);
+			quit_error("Error\nmap error\n", str);
 	}
 	return (1);
 }
@@ -59,7 +59,7 @@ static int check_is_nbr(char *str)
 	while (str[i])
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != 'P' && str[i] != 'C' && str[i] != 'E')
-			quit_error("nbr1 error\n", str);
+			quit_error("Error\nnbr error\n", str);
 		i++;
 	}
 	return (1);
@@ -90,7 +90,7 @@ static int check_play(char *str, int r)
 		while (i < 3)
 		{
 			if(nbr[i++] < 1 || nbr[2] > 1)
-				quit_error("nbr3 error\n", str);
+				quit_error("Error\nnbr error\n", str);
 		} 
 	}
 	return (1);
@@ -105,7 +105,7 @@ t_check check_is_map(char *av)
 	check.read = 1;
 	check.fd = open(av, O_RDONLY);
 	if (check.fd < 0)
-		quit_error("map no exist\n", NULL);
+		quit_error("Error\nmap no exist\n", NULL);
 	while (check.read > 0)
 	{
 		check.prev_len = check.len;
@@ -113,7 +113,7 @@ t_check check_is_map(char *av)
 		check.len = ft_strlen(check.line);
 		if (check.prev_len != -1 && check.prev_len != check.len)
 		{
-		   quit_error("map error\n", check.line);
+		   quit_error("Error\nmap error\n", check.line);
 		}
 		check_play(check.line, check.read);
 		check_is_nbr(check.line);

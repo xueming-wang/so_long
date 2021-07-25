@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/16 15:30:44 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/23 13:02:12 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	__exit__(char *msg, t_vars *vars, int ret)
 {
 	if (msg)
 	{
-		ft_putstr("Error\n");
 		ft_putstr(msg);
 	}
 	if (vars)
