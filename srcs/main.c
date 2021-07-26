@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 19:19:22 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:43:00 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	
 	if (ac < 2 || ac > 2)
 		__exit__("Error\nargument Error\n", NULL, FAILURE);
-	vars = malloc(sizeof(t_vars));
+	vars = ft_calloc(sizeof(t_vars), 1);
 	if (!vars)
 		__exit__("Error\nmalloc Error \n", vars, FAILURE);
 	
