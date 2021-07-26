@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 19:32:36 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:41:03 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void destroy_img(t_vars *vars)
 		}
 		i = 0;
 		while (i < 5)
-			mlx_destroy_image(vars->mlx, vars->tex[i++].img);
+		{
+			if (vars->tex[i].img)
+				mlx_destroy_image(vars->mlx, vars->tex[i].img);
+			++i;
+		}
+		
 		mlx_destroy_window(vars->mlx, vars->win);
 		_free_(vars->mlx);
 	}
