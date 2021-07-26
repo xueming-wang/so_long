@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 18:32:50 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 20:30:54 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct	s_vars
 	int counter;
 }				t_vars;
 
-int     check_is_file(char **av, t_vars *vars);
+int check_is_file(char *av, t_vars *vars);
 int		event_loop(t_vars *vars);
 
 int 	key_press(int keycode, t_vars *vars);

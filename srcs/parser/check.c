@@ -6,18 +6,18 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 16:12:47 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 20:08:47 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 20:30:34 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_is_file(char **av, t_vars *vars)
+int check_is_file(char *av, t_vars *vars)
 {
 	int i ;
 
-	i = ft_strlen(av[1]);
-	while (av[1][i] != '.' )
+	i = ft_strlen(av);
+	while (av[i] != '.' )
 	{
 		if (i == 0)
 			__exit__("Error\nfile error\n", vars, FAILURE);
@@ -25,7 +25,7 @@ int check_is_file(char **av, t_vars *vars)
 		i--;
 	}
 	i++;
-	if (ft_strcmp((av[1] + i), "ber") != 0)
+	if (ft_strcmp((av + i), "ber") != 0)
 		__exit__("Error\nfile error\n", vars, FAILURE);
 		//quit_error("file error\n", NULL);
 	return (1);
