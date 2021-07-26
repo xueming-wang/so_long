@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 13:11:08 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 17:27:51 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 19:38:40 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # define TEX_EXIT "./tex/closed_door.xpm"
 # define TEX_ZERO "./tex/floor.xpm"
 
-
-
 void  set_tex(char *path, t_vars *vars, t_img *tex)
 {
 	const int fd = open(path, O_RDONLY);
@@ -29,7 +27,7 @@ void  set_tex(char *path, t_vars *vars, t_img *tex)
 	tex->img = mlx_xpm_file_to_image(vars->mlx, path, &tex->width, &tex->height);
 	if (!tex->img)
 		__exit__("path Error\n", vars, FAILURE);
-	//把地址生成图片 1个图片
+	/*把地址生成图片 1个图片 Converts xpm data to a new image instance*/
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel, 
 							&tex->line_len, &tex->endian);
 	//获取图片指针地址

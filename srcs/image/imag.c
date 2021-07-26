@@ -6,13 +6,12 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:17:39 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 17:07:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 19:36:54 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
+/* Put a pixel on the screen */
 void	pixel_put_color(t_vars *vars, int x, int y, unsigned int color)    //找到点 放上颜色
 {
 	char	*dst;
@@ -33,7 +32,7 @@ void draw_one_pixe(t_vars *vars, int i, int x_index, int y_index)  // i表示是
 	{
     	x = 0.0;
 		while (x < pixe_x)
-		{ //把原来的值放在新的方块里
+		{ //把对应点的颜色放在新的方块里
 			addr = vars->tex[i].addr;//取一个图片地址 从0 开始
 			addr += (size_t)((y / pixe_y) * vars->tex[i].height) * vars->tex[i].line_len;
 						//格子里y的值占格子长度的百分比位置 * 图片的高度 （得到点的颜色）* 一行的长度
@@ -73,6 +72,6 @@ void draw_map(t_vars *vars)
 
 void	draw_player(t_vars *vars)
 {
-	draw_one_pixe(vars, 0, vars->mouv->x, vars->mouv->y);
+	draw_one_pixe(vars, 0, vars->mouv->x, vars->mouv->y); 
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0); //上传图片到窗口
 }

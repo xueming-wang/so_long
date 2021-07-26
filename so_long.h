@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 19:01:32 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 19:33:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_check
 }   t_check;
 
 typedef struct	s_img {
-	void	*img; //图片
+	void	*img; //图片 the image instance;
 	char	*addr;  //图片地址
 	  
 	int		bits_per_pixel;  //=32 (4个char 8bit)每个像数的字节数 : the number of bits per pixels.
@@ -63,7 +63,7 @@ typedef struct	s_img {
 	int		width;  //图片长
 	int 	line_len;//图片一行的字节数 宽度如果1000* 4 （4个char)一行的字节数 the size of a line times 4.
 	int  	endian;  
-}				t_img;
+}				t_img;  
 
 typedef struct s_mouv
 {

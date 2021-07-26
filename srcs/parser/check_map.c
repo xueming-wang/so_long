@@ -6,13 +6,13 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 16:00:04 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/23 13:03:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/25 19:48:35 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void    get_value(t_vars *vars, t_check check)  //得到c的数量collect和地图的长格数和竖着的格数vars->map_x_len，map_y_len
+/* get the value of collect, and position of player, and width height of map   */
+void    get_value(t_vars *vars, t_check check) 
 {
     int i = 0;
     int j;
@@ -37,8 +37,8 @@ void    get_value(t_vars *vars, t_check check)  //得到c的数量collect和地�
     vars->map_x_len = check.len;
     vars->map_y_len = check.i;
 }
-
-void parsing(char *av, t_vars *vars)  //把得到的地图和数值保存起来 
+/* Save the map data in the map【】 */
+void parsing(char *av, t_vars *vars)  
 {
     t_check check;
  
