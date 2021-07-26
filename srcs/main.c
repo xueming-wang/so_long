@@ -6,13 +6,17 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:56:27 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:31:52 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
+int	event_quit(t_vars *vars)
+{
+	__exit__(NULL, vars, SUCCESS);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -23,7 +27,7 @@ int	main(int ac, char **av)
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		__exit__("Error\nmalloc Error \n", vars, FAILURE);
-	vars->counter = 1;
+	
 	vars->mouv= malloc(sizeof(t_mouv));
 	if (!vars->mouv)
 		__exit__("Error\nmalloc Error \n", vars, FAILURE);
@@ -52,7 +56,7 @@ int	main(int ac, char **av)
 	vars->img->height = HEIGHT;
 	mlx_hook(vars->win, 2, 1L << 0, key_press, vars);
 	mlx_hook(vars->win, 3, 1L << 1, key_release, vars);
-	mlx_hook(vars->win, RED_CROSS, 1L << 2, __exit__, vars); //鼠标点叉叉
+	mlx_hook(vars->win, RED_CROSS, 1L << 2, event_quit, vars); //鼠标点叉叉
 	 /*Hook into each loop.*/
 	mlx_loop_hook(vars->mlx, event_loop, vars);  //循环事件
 	/* Loop over the given mlx pointer */

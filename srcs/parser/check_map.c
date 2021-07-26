@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 16:00:04 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 14:49:49 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:04:46 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void parsing(char *av, t_vars *vars)
  
     int i = 0;
     
-    check = check_is_map(av);
+    check = check_is_map(av, vars);
     vars->map = ft_calloc(sizeof(char *), (check.i + 1));
     if (!vars->map)
         __exit__(NULL, vars, FAILURE);

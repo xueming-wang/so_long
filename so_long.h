@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 16:09:07 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:32:50 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,7 @@ typedef struct	s_vars
 	int counter;
 }				t_vars;
 
-int     check_is_file(char **av);
-void	quit_error(char *msg, char *line);
+int     check_is_file(char **av, t_vars *vars);
 int		event_loop(t_vars *vars);
 
 int 	key_press(int keycode, t_vars *vars);
@@ -107,12 +106,14 @@ int	__exit__(char *msg, t_vars *vars, int ret);
 void	pixel_put_color(t_vars *vars, int x, int y, unsigned int color);
 void 	draw_pixe(t_vars *vars);
 
-t_check check_is_map(char *av);
+t_check check_is_map(char *av, t_vars *vars);
 void draw_one_pixe(t_vars *vars, int i, int x_index, int y_index);
 void 	draw_map(t_vars *vars);
 void 	parsing(char *av, t_vars *vars);
 int		main(int ac, char **av);
 void	draw_player(t_vars *vars);
 void  tex_all(t_vars *vars);
+void counter_bonus(t_vars *vars);
+void  _free_(void *vars);
 
 #endif

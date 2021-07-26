@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 16:18:09 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:30:06 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,6 @@ void destroy_img(t_vars *vars)
 }
 
 #endif
-void	quit_error(char *msg, char *line)
-{
-	if (line)
-		free(line);
-	ft_putstr("Error\n");
-	if(msg)
-		ft_putstr(msg);
-	exit(EXIT_FAILURE);
-}
 
 
 void  free_vars(t_vars *vars)
@@ -94,6 +85,7 @@ void  free_vars(t_vars *vars)
 		 _free_(vars);
 	}
 }
+
 int	__exit__(char *msg, t_vars *vars, int ret)
 {
 	if (msg)

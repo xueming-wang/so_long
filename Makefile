@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 18:23:16 by xuwang            #+#    #+#              #
-#    Updated: 2021/07/25 18:54:49 by xuwang           ###   ########.fr        #
+#    Updated: 2021/07/26 18:22:18 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS 	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 IFLAGS = -I. -I./libft -I./mlx
 LFLAGS = -L./libft -lft
+BFLAGS = 0
 
 MLX_DIR = ./mlx
 MLX = libmlx.dylib
@@ -26,12 +27,13 @@ SRC	:= srcs/parser/check.c \
 		srcs/main.c \
 		srcs/events/even_key.c \
 		srcs/image/imag.c \
-		srcs/image/tex.c 
+		srcs/image/tex.c \
+		srcs/events/even_bonus.c 
 		
 OBJ	:= $(SRC:%.c=%.o)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ -D BONUS=$(BFLAGS)
 
 
 ifeq ($(shell uname), Linux)
@@ -47,6 +49,9 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(IFLAGS) $(LFLAGS) $(MFLAGS) -o $@ 
 
 all: $(NAME)
+
+bonus: BFLAGS = 1
+bonus: $(NAME)
 
 clean:
 	$(MAKE) -C libft clean

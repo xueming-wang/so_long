@@ -6,13 +6,13 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 16:12:47 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 16:52:39 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:32:46 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_is_file(char **av)
+int check_is_file(char **av, t_vars *vars)
 {
 	int i ;
 
@@ -20,16 +20,18 @@ int check_is_file(char **av)
 	while (av[1][i] != '.' )
 	{
 		if (i == 0)
-			quit_error("file error\n", NULL);
+			__exit__("file error\n", vars, FAILURE);
+			//quit_error("file error\n", NULL);
 		i--;
 	}
 	i++;
 	if (ft_strcmp((av[1] + i), "ber") != 0)
-		quit_error("file error\n", NULL);
+		__exit__("file error\n", vars, FAILURE);
+		//quit_error("file error\n", NULL);
 	return (1);
 }
 
-static int  map_is_one(char *str, int first_last_line, int len)
+static int  map_is_one(char *str, int first_last_line, int len, t_vars *vars)
 {
 	int i;
 
@@ -39,19 +41,20 @@ static int  map_is_one(char *str, int first_last_line, int len)
 		while (str[i])
 		{
 			if (str[i] != '1')
-				quit_error("map error\n", str);
+				__exit__("map error\n", vars, FAILURE);
+				//quit_error("map error\n", str);
 			i++;
 		}
 	}
 	else
 	{
 		if ((str[0] != '1') || (str[len - 1] != '1'))
-			quit_error("map error\n", str);
+			__exit__("map error\n", vars, FAILURE);
 	}
 	return (1);
 }
 
-static int check_is_nbr(char *str)
+static int check_is_nbr(char *str, t_vars *vars)
 {
 	int i = 0;
 	if(!str)
@@ -59,13 +62,14 @@ static int check_is_nbr(char *str)
 	while (str[i])
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != 'P' && str[i] != 'C' && str[i] != 'E')
-			quit_error("nbr error\n", str);
+			__exit__("number error\n", vars, FAILURE);
+			//quit_error("nbr error\n", str);
 		i++;
 	}
 	return (1);
 }
 
-static int check_play(char *str, int r)
+static int check_play(char *str, int r, t_vars *vars)
 {
 	const char play[] = {'C', 'E', 'P'};
 	static int nbr[3] = {0};
@@ -90,13 +94,14 @@ static int check_play(char *str, int r)
 		while (i < 3)
 		{
 			if(nbr[i++] < 1 || nbr[2] > 1)
-				quit_error("nbr error\n", str);
+				__exit__("number error\n", vars, FAILURE);
+				//quit_error("nbr error\n", str);
 		} 
 	}
 	return (1);
 }
 
-t_check check_is_map(char *av)
+t_check check_is_map(char *av, t_vars *vars)
 {
 	t_check check;
 		
@@ -105,7 +110,8 @@ t_check check_is_map(char *av)
 	check.read = 1;
 	check.fd = open(av, O_RDONLY);
 	if (check.fd < 0)
-		quit_error("Error\nmap no exist\n", NULL);
+		__exit__("map no exist\n", vars, FAILURE);
+		//quit_error("Error\nmap no exist\n", NULL);
 	while (check.read > 0)
 	{
 		check.prev_len = check.len;
@@ -113,14 +119,15 @@ t_check check_is_map(char *av)
 		check.len = ft_strlen(check.line);
 		if (check.prev_len != -1 && check.prev_len != check.len)
 		{
-		   quit_error("Error\nmap error\n", check.line);
+			__exit__("map error\n", vars, FAILURE);
+		   //quit_error("Error\nmap error\n", check.line);
 		}
-		check_play(check.line, check.read);
-		check_is_nbr(check.line);
+		check_play(check.line, check.read, vars);
+		check_is_nbr(check.line, vars);
 		if (check.i++ == 0 || check.read == 0)
-			map_is_one(check.line, 1, check.len);
+			map_is_one(check.line, 1, check.len, vars);
 		else
-			map_is_one(check.line, 0, check.len);
+			map_is_one(check.line, 0, check.len, vars);
 		free(check.line);
 	}
 	close(check.fd);
