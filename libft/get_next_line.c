@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:43:40 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 19:54:20 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 20:03:16 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ static char	*gnl_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	while (s2 && i < len && s2[j])
+	{
 		tab[i++] = s2[j++];
+	}
 	tab[i] = '\0';
-	//free((char *)s1);
+	free((char *)s1);
 	return (tab);
 }
 
