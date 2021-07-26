@@ -6,24 +6,24 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:07:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:06:22 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:51:26 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_key  *init_key(void)
+t_key	*init_key(void)
 {
-    t_key *key;
-
-    key = malloc(sizeof(t_key));
-    if (!key)
-      return (NULL);
-    key->w = 0;
-    key->a = 0;
-    key->s = 0;
-    key->d = 0;
-    return (key);
+	t_key	*key;
+	
+	key = malloc(sizeof(t_key));
+	if (!key)
+		return (NULL);
+	key->w = 0;
+	key->a = 0;
+	key->s = 0;
+	key->d = 0;
+	return (key);
 }
 
 int key_press(int keycode, t_vars *vars)
@@ -61,23 +61,24 @@ void   data_mouv(t_vars *vars)
     if (vars->key->w == 1 && vars->map[vars->mouv->y - 1][vars->mouv->x] != '1')
     {
         vars->mouv->y -= 1;
-        printf("W : [%d]\n", vars->mouv->y);
+		    ft_putstr(ft_itoa(vars->counter++));
     }
     else if (vars->key->a == 1 && vars->map[vars->mouv->y][vars->mouv->x - 1] != '1')
     {
       vars->mouv->x -= 1;
-      printf("A : [%d]\n", vars->mouv->x);
+		 ft_putstr(ft_itoa(vars->counter++));
     }
     else if (vars->key->s == 1 && vars->map[vars->mouv->y + 1][vars->mouv->x] != '1')
     {
       vars->mouv->y += 1;
-      printf("S : [%d]\n", vars->mouv->y);
+		 ft_putstr(ft_itoa(vars->counter++));
     }
     else if (vars->key->d == 1 && vars->map[vars->mouv->y][vars->mouv->x + 1] != '1')
     {
       vars->mouv->x += 1;
-      printf("D : [%d]\n", vars->mouv->x);
+		  ft_putstr(ft_itoa(vars->counter++));
     }
+    ft_putstr("\n");
 }
 void player_mouv(t_vars *vars)
 {

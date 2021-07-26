@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:41:56 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/12 16:01:06 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:37:21 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr(char *str);
 int			get_next_line(int fd, char **line);
 long long	ft_atoi_long(const char *str);
-int	ft_strcmp(const char *s1, const char *s2);
+int			ft_strcmp(const char *s1, const char *s2);
 
 #endif 

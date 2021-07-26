@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:10:37 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:56:27 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		__exit__("Error\nmalloc Error \n", vars, FAILURE);
+	vars->counter = 1;
 	vars->mouv= malloc(sizeof(t_mouv));
 	if (!vars->mouv)
 		__exit__("Error\nmalloc Error \n", vars, FAILURE);
