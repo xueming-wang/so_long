@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 16:12:47 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 18:32:46 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:26:20 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_check check_is_map(char *av, t_vars *vars)
 	ft_bzero(&check, sizeof(t_check));
 	check.len = -1;
 	check.read = 1;
-	check.fd = open(av, O_RDONLY);
+	check.fd = open(av, O_RDWR);
 	if (check.fd < 0)
 		__exit__("map no exist\n", vars, FAILURE);
 		//quit_error("Error\nmap no exist\n", NULL);
