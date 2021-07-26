@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 20:06:07 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 20:15:28 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ void destroy_img(t_vars *vars)
 		mlx_destroy_window(vars->mlx, vars->win);
 		_free_(vars->mlx);
 	}
-	if (vars->map)
-		{
-			while (vars->map[i])
-				 _free_(vars->map[i++]);
-			 _free_(vars->map);
-		}
+	
 }
 #else 
 void destroy_img(t_vars *vars)
@@ -62,12 +57,6 @@ void destroy_img(t_vars *vars)
 		mlx_destroy_display(vars->mlx);
 		_free_(vars->mlx);
 	}
-	if (vars->map)
-		{
-			while (vars->map[i])
-				 _free_(vars->map[i++]);
-			 _free_(vars->map);
-		}
 }
 
 #endif
@@ -75,23 +64,23 @@ void destroy_img(t_vars *vars)
 
 void  free_vars(t_vars *vars)
 {
-	int i = 0;
+	int i;
 	if (vars)
 	{
-		
-			destroy_img(vars);
+		destroy_img(vars);
 		if (vars->key)
 			 _free_(vars->key);
 		if (vars->mouv)
 		 	_free_(vars->mouv);
-		
-		// if (vars->map)
-		// {
-		// 	while (vars->map[i])
-		// 		 _free_(vars->map[i++]);
-		// 	 _free_(vars->map);
-		// }
-		 _free_(vars);
+		i = 0;
+		if (vars->map)
+		{
+			while (vars->map[i])
+				_free_(vars->map[i++]);
+			_free_(vars->map);
+		}
+
+		_free_(vars);
 	}
 }
 
