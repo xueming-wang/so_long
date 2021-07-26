@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 19:33:52 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:11:20 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ int 	key_press(int keycode, t_vars *vars);
 int 	key_release(int keycode, t_vars *vars);
 int		key_hook(int keycode);
 t_key  *init_key(void);
-int		__close__(t_vars *vars);
-void	__exit__(char *msg, t_vars *vars, int ret);
+
+int	__exit__(char *msg, t_vars *vars, int ret);
 void	pixel_put_color(t_vars *vars, int x, int y, unsigned int color);
 void 	draw_pixe(t_vars *vars);
 

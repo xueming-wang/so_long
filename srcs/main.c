@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 14:16:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:10:37 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 	vars->img->height = HEIGHT;
 	mlx_hook(vars->win, 2, 1L << 0, key_press, vars);
 	mlx_hook(vars->win, 3, 1L << 1, key_release, vars);
-	mlx_hook(vars->win, RED_CROSS, 1L << 2, __close__, vars); //鼠标点叉叉
+	mlx_hook(vars->win, RED_CROSS, 1L << 2, __exit__, vars); //鼠标点叉叉
 	 /*Hook into each loop.*/
 	mlx_loop_hook(vars->mlx, event_loop, vars);  //循环事件
 	/* Loop over the given mlx pointer */

@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:07:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/25 19:37:36 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:06:22 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_key  *init_key(void)
 int key_press(int keycode, t_vars *vars)
 {
   if (keycode == KEY_ESC)
-    __close__(vars);
+    __exit__(NULL, vars, SUCCESS);
   else if (keycode == KEY_W && vars->key->w == 0)
     vars->key->w = 1;
   else if (keycode == KEY_A && vars->key->a == 0)
@@ -44,7 +44,7 @@ int key_press(int keycode, t_vars *vars)
 int key_release(int keycode, t_vars *vars)
 {
   if (keycode == KEY_ESC)
-    __close__(vars);
+    __exit__(NULL, vars, SUCCESS);
   if (keycode == KEY_W && vars->key->w == 1)
     vars->key->w = 0;
   else if (keycode == KEY_A && vars->key->a == 1)
