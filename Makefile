@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 18:23:16 by xuwang            #+#    #+#              #
-#    Updated: 2021/07/26 19:17:06 by xuwang           ###   ########.fr        #
+#    Updated: 2021/07/26 19:30:46 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,14 @@ clean:
 	$(MAKE) -C libft clean
 	rm -rf $(OBJ)
 
+ifeq ($(shell uname), Linux)
+fclean: MLX_DIR = ./mlx_linux
+fclean: MLX = libmlx.a
+endif
 fclean: clean
 	$(MAKE) -C libft fclean
-	$(MAKE) -C ./mlx clean
-	$(MAKE) -C ./mlx_linux clean
-	rm -rf libmlx.dylib
-	rm -rf libmlx.a
+	$(MAKE) -C ./$(MLX_DIR) clean
+	rm -rf $(MLX)
 	rm -rf $(NAME)
 
 re: fclean all

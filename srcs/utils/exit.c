@@ -6,19 +6,20 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 18:39:31 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:32:36 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#if defined(__APPLE__) && defined(__MACH__)
 void  _free_(void *vars)
 {
 	if (vars)
 		free(vars);
 	vars = NULL;	
 }
+
+#if defined(__APPLE__) && defined(__MACH__)
 void destroy_img(t_vars *vars)
 {
 	int i;
@@ -37,12 +38,6 @@ void destroy_img(t_vars *vars)
 	}
 }
 #else 
-void  _free_(void *vars)
-{
-	if (vars)
-		free(vars);
-	vars = NULL;	
-}
 void destroy_img(t_vars *vars)
 {
 	int i;
