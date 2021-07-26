@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:07:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 16:11:13 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 16:17:44 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,32 @@ void   data_mouv(t_vars *vars)
     {
         vars->mouv->y -= 1;
 		    //ft_putstr(ft_itoa(vars->counter++));
+        ft_putnbr_fd(vars->counter++, STDOUT_FILENO);
+        ft_putstr("\n");
+        
     }
     else if (vars->key->a == 1 && vars->map[vars->mouv->y][vars->mouv->x - 1] != '1')
     {
         vars->mouv->x -= 1;
 		    //ft_putstr(ft_itoa(vars->counter++));
+       ft_putnbr_fd(vars->counter++, STDOUT_FILENO);
+         ft_putstr("\n");
     }
     else if (vars->key->s == 1 && vars->map[vars->mouv->y + 1][vars->mouv->x] != '1')
     {
       vars->mouv->y += 1;
-		 //ft_putstr(ft_itoa(vars->counter++));
+		  //ft_putstr(ft_itoa(vars->counter++));
+     ft_putnbr_fd(vars->counter++, STDOUT_FILENO);
+       ft_putstr("\n");
     }
     else if (vars->key->d == 1 && vars->map[vars->mouv->y][vars->mouv->x + 1] != '1')
     {
       vars->mouv->x += 1;
 		  //ft_putstr(ft_itoa(vars->counter++));
+      ft_putnbr_fd(vars->counter++, STDOUT_FILENO);
+        ft_putstr("\n");
     }
-    ft_putstr(ft_itoa(vars->counter++));
-    ft_putstr("\n");
+    //ft_putstr(ft_itoa(vars->counter++));
 }
 void player_mouv(t_vars *vars)
 {
