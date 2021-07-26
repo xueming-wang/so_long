@@ -6,7 +6,7 @@
 #    By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 18:23:16 by xuwang            #+#    #+#              #
-#    Updated: 2021/07/26 18:22:18 by xuwang           ###   ########.fr        #
+#    Updated: 2021/07/26 19:17:06 by xuwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,9 @@ clean:
 fclean: clean
 	$(MAKE) -C libft fclean
 	$(MAKE) -C ./mlx clean
+	$(MAKE) -C ./mlx_linux clean
 	rm -rf libmlx.dylib
+	rm -rf libmlx.a
 	rm -rf $(NAME)
 
 re: fclean all
