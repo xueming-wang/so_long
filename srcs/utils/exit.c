@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 18:30:06 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 18:39:31 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	__exit__(char *msg, t_vars *vars, int ret)
 {
 	if (msg)
 		ft_putstr(msg);
-	if (vars)
-		free_vars(vars);
+	free_vars(vars);
 	exit(ret);
 }
