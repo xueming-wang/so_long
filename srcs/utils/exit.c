@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:17:37 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 16:09:45 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void  free_vars(t_vars *vars)
 			 _free_(vars->key);
 		if (vars->mouv)
 		 	_free_(vars->mouv);
+		if (vars->counter)
+			_free_(vars->counter);
 		if (vars->map)
 		{
 			while (vars->map[i])

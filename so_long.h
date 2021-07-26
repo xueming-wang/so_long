@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 18:17:59 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:41:16 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 16:09:07 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct	s_vars
 	t_mouv *mouv;
 	t_img *img;
 	t_img tex[5];
-	int 	counter;
+	int counter;
 }				t_vars;
 
 int     check_is_file(char **av);
