@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:04:13 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 18:31:52 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:19:22 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int ac, char **av)
 	
 	vars->img->width = WIDTH;
 	vars->img->height = HEIGHT;
+	vars->counter = 0;
 	mlx_hook(vars->win, 2, 1L << 0, key_press, vars);
 	mlx_hook(vars->win, 3, 1L << 1, key_release, vars);
 	mlx_hook(vars->win, RED_CROSS, 1L << 2, event_quit, vars); //鼠标点叉叉
