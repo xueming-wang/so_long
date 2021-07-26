@@ -6,11 +6,13 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:05 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/26 15:11:08 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:17:37 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+#if defined(__APPLE__) && defined(__MACH__)
 void  _free_(void *vars)
 {
 	if (vars)
@@ -34,7 +36,33 @@ void destroy_img(t_vars *vars)
 		_free_(vars->mlx);
 	}
 }
+#else 
+void  _free_(void *vars)
+{
+	if (vars)
+		free(vars);
+	vars = NULL;	
+}
+void destroy_img(t_vars *vars)
+{
+	int i;
+	if (vars->mlx)
+	{
+		if (vars->img)
+		{
+			mlx_destroy_image(vars->mlx, vars->img->img);
+			_free_(vars->img);
+		}
+		i = 0;
+		while (i < 5)
+			mlx_destroy_image(vars->mlx, vars->tex[i++].img);
+		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
+		_free_(vars->mlx);
+	}
+}
 
+#endif
 void	quit_error(char *msg, char *line)
 {
 	if (line)
