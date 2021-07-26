@@ -6,7 +6,7 @@
 /*   By: xuwang <xuwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:43:40 by xuwang            #+#    #+#             */
-/*   Updated: 2021/07/04 17:39:28 by xuwang           ###   ########.fr       */
+/*   Updated: 2021/07/26 19:52:55 by xuwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	*save_line(char *save)
 	i++;
 	while (save[i])
 		str[j++] = save[i++];
-	free(save);
+	//free(save);
 	str[j] = '\0';
 	return (str);
 }
